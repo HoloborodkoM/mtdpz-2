@@ -393,6 +393,8 @@ describe("List test: method clear()", () => {
 
 describe("List test: method extend(elements)", () => {
    
+   let addedList
+
    beforeEach(() => { 
 
       testList = new List() 
@@ -402,7 +404,7 @@ describe("List test: method extend(elements)", () => {
       testList.append('d')
       testList.append('s')
 
-      let addedList = new List()
+      addedList = new List()
 
       addedList.append('w')
       addedList.append('o')
@@ -414,7 +416,7 @@ describe("List test: method extend(elements)", () => {
 
       testList.extend(addedList)
       
-      expect(testLinkedList.length()).toBe(7)
+      expect(testList.length()).toBe(7)
       expect(addedList.length()).toBe(3)
 
       expect(testList.get(0)).toBe('k')
