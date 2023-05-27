@@ -9,10 +9,19 @@ class List {
    }
 
    append(element) {
+
+      if (typeof(element) !== 'string' || element.length !== 1) {
+         throw new Error('Error. Expected character type!!!');
+      }
+
       this.list.push(element);
    }
 
    insert(element, index) {
+
+      if (typeof(element) !== 'string' || element.length !== 1) {
+         throw new Error('Error. Expected character type!!!');
+      }
 
       if (index < 0 || index > this.list.length) {
          throw new Error('Error. Incorrect index!!!');
@@ -34,6 +43,11 @@ class List {
    }
 
    deleteAll(element) {
+
+      if (typeof(element) !== 'string' || element.length !== 1) {
+         throw new Error('Error. Expected character type!!!');
+      }
+
       this.list = this.list.filter((item) => item !== element);
    }
 
@@ -59,10 +73,20 @@ class List {
    }
 
    findFirst(element) {
+
+      if (typeof(element) !== 'string' || element.length !== 1) {
+         throw new Error('Error. Expected character type!!!');
+      }
+
       return this.list.indexOf(element);
    }
 
    findLast(element) {
+      
+      if (typeof(element) !== 'string' || element.length !== 1) {
+         throw new Error('Error. Expected character type!!!');
+      }
+
       return this.list.lastIndexOf(element);
    }
 
