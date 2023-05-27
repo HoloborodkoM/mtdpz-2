@@ -14,7 +14,7 @@ list.append('s');
 list.append('t');
 
 // Checking length for list (result just easier to see)
-console.log("Method append:");
+console.log("\nMethod append:");
 process.stdout.write("Symbolically added 'My list' : ");
 console.log(`Size list: ${list.length()}, result: ${list.result()}\n`);
 
@@ -39,7 +39,7 @@ const deleteElemlent_4 = list.delete(1); // 'y'
 const deleteElemlent_5 = list.delete(1); // 'l'
 
 console.log("Method delete:");
-process.stdout.write("Delete by symbols '!' x2, ' ', 'y', 'l': ");
+process.stdout.write("Delete by symbols: ");
 console.log(`Size list: ${list.length()}, result: ${list.result()}`);
 console.log(`Delete this: '${deleteElemlent_1}', '${deleteElemlent_2}', '${deleteElemlent_3}', '${deleteElemlent_4}', '${deleteElemlent_5}'\n`);
 
@@ -68,10 +68,12 @@ process.stdout.write("Reverse list: ");
 console.log(`Size list: ${list.length()}, result: ${list.result()}\n`);
 
 list.append('!');
-list.reverse();
 
 process.stdout.write("Append '!': ");
-console.log(`Size list: ${list.length()}, result: ${list.result()}`);
+console.log(`Size list: ${list.length()}, result: ${list.result()}\n`);
+
+list.reverse();
+
 process.stdout.write("Reverse list again with add '!' in start: ");
 console.log(`Size list: ${list.length()}, result: ${list.result()}\n`);
 
@@ -103,3 +105,54 @@ process.stdout.write("Main list (append '!'): ");
 console.log(`Size list: ${list.length()}, result: ${list.result()}`);
 process.stdout.write("Cloned list (append 'P'): ");
 console.log(`Size list: ${cloneList.length()}, result: ${cloneList.result()}\n`);
+
+list.insert('l', 3);
+
+process.stdout.write("Insert 'l' for find elements: ");
+console.log(`Size list: ${list.length()}, result: ${list.result()}\n`);
+
+// Checking findFirst and findLast for list
+const findElement_1 = list.findFirst('l');
+const findElement_2 = list.findLast('l');
+const findElement_3 = list.findFirst('z');
+const findElement_4 = list.findLast('p');
+
+console.log("Methods findFirst findLast:");
+console.log(`Size list: ${list.length()}, result: ${list.result()}`);
+process.stdout.write("Find first: ");
+console.log(`Try find 'l': '${findElement_1}', try find 'z': '${findElement_3}'`);
+process.stdout.write("Find last: ");
+console.log(`Try find 'l': '${findElement_2}', try find 'p': '${findElement_4}'\n`);
+
+// Checking extend for list
+const shortList = new List();
+
+shortList.append('k');
+shortList.append('y');
+shortList.append('s');
+
+list.extend(shortList);
+
+console.log("Method extend:");
+process.stdout.write("Main list: ");
+console.log(`Size list: ${list.length()}, result: ${list.result()}`);
+process.stdout.write("Short list: ");
+console.log(`Size list: ${shortList.length()}, result: ${shortList.result()}\n`);
+
+list.delete(3); // 'l'
+shortList.append('a');
+
+console.log("Delete 'l' for main list and append 'a' for second list\n");
+
+console.log("Check difference of these lists:");
+process.stdout.write("Main list: ");
+console.log(`Size list: ${list.length()}, result: ${list.result()}`);
+process.stdout.write("Short list: ");
+console.log(`Size list: ${shortList.length()}, result: ${shortList.result()}\n`);
+
+// Checking clear for list
+list.clear();
+
+console.log("Method clear:");
+process.stdout.write("Clear list: ");
+console.log(`Size list: ${list.length()}, result: ${list.result()}\n`);

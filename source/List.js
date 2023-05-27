@@ -35,16 +35,15 @@ class List {
 
    deleteAll(element) {
       this.list = this.list.filter((item) => item !== element);
-
    }
 
    get(index) {
       
       if (index < 0 || index >= this.list.length) {
          throw new Error('Error. Incorrect index!!!');
-       }
+      }
    
-       return this.list[index];
+      return this.list[index];
    }
 
    clone() {
@@ -58,7 +57,23 @@ class List {
    reverse() {
       this.list.reverse();
    }
-   
+
+   findFirst(element) {
+      return this.list.indexOf(element);
+   }
+
+   findLast(element) {
+      return this.list.lastIndexOf(element);
+   }
+
+   clear() {
+      this.list = [];
+   }
+
+   extend(elements) {
+      this.list.push(...elements.list);
+   }
+
    result() {
       
       let string = "";
