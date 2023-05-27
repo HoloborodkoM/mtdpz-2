@@ -447,3 +447,23 @@ describe("List test: method extend(elements)", () => {
 
    })
 })
+
+describe("List test: method result(elements)", () => {
+   
+   beforeEach(() => { testList = new List() })
+   
+   test("Checking result string of the list", () => {
+
+      testList.append('W')
+      testList.append('h')
+      testList.append('y')
+      testList.append(' ')
+      testList.append('k')
+      testList.append('i')
+      testList.append('d')
+      testList.append('s')
+      testList.append('?')
+      
+      expect(testList.result()).toBe('Why kids?')
+   })
+})
