@@ -206,3 +206,242 @@ describe("List test: method deleteAll(element)", () => {
 
    })
 })
+
+describe("List test: method get(index)", () => {
+   
+   beforeEach(() => { testList = new List() })
+   
+   test("Checking element by index", () => {
+
+      testList.append('k')
+      testList.append('i')
+      testList.append('d')
+      testList.append('s')
+
+      expect(testList.get(0)).toBe('k')
+      expect(testList.get(1)).toBe('i')
+      expect(testList.get(2)).toBe('d')
+      expect(testList.get(3)).toBe('s')
+
+   })
+   
+   test("Checking element by incorrect index", () => {
+
+      testList.append('k')
+
+      const tryGetElementCase1 = () => testList.get(-1)
+      const tryGetElementCase2 = () => testList.get(testList.length())
+      
+      expect(testList.length()).toBe(1)
+      
+      expect(tryGetElementCase1).toThrow('Error. Incorrect index!!!')
+      expect(tryGetElementCase2).toThrow('Error. Incorrect index!!!')
+   
+   })
+})
+
+describe("List test: method clone()", () => {
+
+   beforeEach(() => { 
+
+      testList = new List() 
+
+      testList.append('k')
+      testList.append('i')
+      testList.append('d')
+      testList.append('s')
+
+   })
+   
+   test("Cheking clone of the list", () => {
+
+      const cloneList = testList.clone()
+      
+      expect(cloneList.get(0)).toBe('k')
+      expect(cloneList.get(1)).toBe('i')
+      expect(cloneList.get(2)).toBe('d')
+      expect(cloneList.get(3)).toBe('s')
+   
+   })
+   
+   test("Checking independence of these lists", () => {
+      
+      const cloneList = testList.clone()
+      
+      testList.append('?')
+      testList.append('p')
+
+      const tryGetElement = () => cloneList.get(4)
+      
+      expect(cloneList.length()).toBe(4)
+      expect(cloneList.get(3)).toBe('s')
+      expect(tryGetElement).toThrow('Error. Incorrect index!!!')
+      
+      expect(testList.length()).toBe(6)
+      expect(testList.get(5)).toBe('p')
+
+   })
+})
+
+describe("List test: method reverse()", () => {
+
+   beforeEach(() => { testList = new List() })
+   
+   test("Checking reverse of the list", () => {
+      
+      testList.append('k')
+      testList.append('i')
+      testList.append('d')
+      testList.append('s')
+      
+      testList.reverse()
+
+      expect(testList.get(0)).toBe('s')
+      expect(testList.get(1)).toBe('d')
+      expect(testList.get(2)).toBe('i')
+      expect(testList.get(3)).toBe('k')
+
+  })
+})
+
+describe("List test: method findFirst(element)", () => {
+
+   beforeEach(() => { 
+
+      testList = new List() 
+
+      testList.append('k')
+      testList.append('i')
+      testList.append('d')
+      testList.append(' ')
+      testList.append('i')
+      testList.append('s')
+
+   })
+   
+   test("Checking first find element in the list", () => {
+      
+      const firstFindElement = testList.findFirst('i')
+      
+      expect(firstFindElement).toBe(1)
+   })
+  
+   test("Checking missing element", () => {
+  
+      const firstFindElement = testList.findFirst('Q')
+
+      expect(firstFindElement).toBe(-1)  
+   })
+})
+
+describe("List test: method findLast(element)", () => {
+
+   beforeEach(() => { 
+
+      testList = new List() 
+
+      testList.append('k')
+      testList.append('i')
+      testList.append('d')
+      testList.append(' ')
+      testList.append('i')
+      testList.append('s')
+
+   })
+   
+   test("Checking last find element in the list", () => {
+  
+      const lastFindElement = testList.findLast('i')
+
+      expect(lastFindElement).toBe(4)
+   })
+  
+   test("Checking missing element", () => {
+  
+      const lastFindElement = testList.findLast("Q")
+
+      expect(lastFindElement).toBe(-1)  
+   })
+})
+
+describe("List test: method clear()", () => {
+
+   beforeEach(() => { 
+
+      testList = new List() 
+
+      testList.append('k')
+      testList.append('i')
+      testList.append('d')
+      testList.append('s')
+
+   })
+
+   test("Checking clear list", () => {
+
+      expect(testList.length()).toBe(4)
+    
+      testList.clear()
+    
+      expect(testList.length()).toBe(0)
+
+      const tryGetElement = () => testList.get(0)
+
+      expect(tryGetElement).toThrow('Error. Incorrect index!!!')
+   })
+})
+
+describe("List test: method extend(elements)", () => {
+   
+   beforeEach(() => { 
+
+      testList = new List() 
+
+      testList.append('k')
+      testList.append('i')
+      testList.append('d')
+      testList.append('s')
+
+      let addedList = new List()
+
+      addedList.append('w')
+      addedList.append('o')
+      addedList.append('w')
+
+   })
+   
+   test("Checking extend of the list", () => {
+
+      testList.extend(addedList)
+      
+      expect(testLinkedList.length()).toBe(7)
+      expect(addedList.length()).toBe(3)
+
+      expect(testList.get(0)).toBe('k')
+      expect(testList.get(1)).toBe('i')
+      expect(testList.get(2)).toBe('d')
+      expect(testList.get(3)).toBe('s')
+      expect(testList.get(4)).toBe('w')
+      expect(testList.get(5)).toBe('o')
+      expect(testList.get(6)).toBe('w')
+   
+   })
+   
+   test("Checking independence of these lists", () => {
+   
+      testList.extend(addedList)
+
+      testList.append('?')
+      testList.append('p')
+
+      const tryGetElement = () => addedList.get(3)
+      
+      expect(addedList.length()).toBe(3)
+      expect(addedList.get(2)).toBe('w')
+      expect(tryGetElement).toThrow('Error. Incorrect index!!!')
+      
+      expect(testList.length()).toBe(9)
+      expect(testList.get(8)).toBe('p')
+
+   })
+})
