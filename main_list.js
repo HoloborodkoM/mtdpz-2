@@ -15,8 +15,8 @@ list.append('t');
 
 // Checking length for list (result just easier to see)
 console.log("Method append:");
-process.stdout.write("Symbolically added 'My list' : ")
-console.log(`Size list: ${list.length()}, result: ${list.result()}`);
+process.stdout.write("Symbolically added 'My list' : ");
+console.log(`Size list: ${list.length()}, result: ${list.result()}\n`);
 
 // Checking insert for list
 list.insert('!', 0);
@@ -28,8 +28,8 @@ list.insert('e', 7);
 list.insert(' ', 8);
 
 console.log("Method insert:");
-process.stdout.write("Inserted by symbols '!' 'love ' '!': ");
-console.log(`Size list: ${list.length()}, result: ${list.result()}`);
+process.stdout.write("Inserted by symbols '!', 'love ', '!': ");
+console.log(`Size list: ${list.length()}, result: ${list.result()}\n`);
 
 // Checking delete for list
 const deleteElemlent_1 = list.delete(0); // '!'
@@ -41,3 +41,65 @@ const deleteElemlent_5 = list.delete(1); // 'l'
 console.log("Method delete:");
 process.stdout.write("Delete by symbols '!' x2, ' ', 'y', 'l': ");
 console.log(`Size list: ${list.length()}, result: ${list.result()}`);
+console.log(`Delete this: '${deleteElemlent_1}', '${deleteElemlent_2}', '${deleteElemlent_3}', '${deleteElemlent_4}', '${deleteElemlent_5}'\n`);
+
+list.insert('K', 0);
+list.insert('K', 3);
+list.insert('K', 4);
+list.insert('K', 8);
+list.insert('K', list.length());
+
+process.stdout.write("Insert 'K' for deleteAll: ");
+console.log(`Size list: ${list.length()}, result: ${list.result()}\n`);
+
+// Checking deleteAll for list
+list.deleteAll('K'); // deleteAll 'K'
+list.deleteAll('+'); // nothing change
+
+console.log("Method deleteAll:");
+process.stdout.write("Delete all symbols 'K', nothing change with '+': ");
+console.log(`Size list: ${list.length()}, result: ${list.result()}\n`);
+
+// Checking reverse for list
+list.reverse();
+
+console.log("Method reverse:");
+process.stdout.write("Reverse list: ");
+console.log(`Size list: ${list.length()}, result: ${list.result()}\n`);
+
+list.append('!');
+list.reverse();
+
+process.stdout.write("Append '!': ");
+console.log(`Size list: ${list.length()}, result: ${list.result()}`);
+process.stdout.write("Reverse list again with add '!' in start: ");
+console.log(`Size list: ${list.length()}, result: ${list.result()}\n`);
+
+// Checking get for list
+const getElement_1 = list.get(2); // 'o'
+const getElement_2 = list.get(0); // '!'
+const getElement_3 = list.get(4); // 'e'
+const getElement_4 = list.get(list.length() - 1); // 'e'
+
+console.log("Method get:");
+console.log("Index: 2, 0, 4, 9");
+process.stdout.write("Get this: ");
+console.log(`Elements: '${getElement_1}', '${getElement_2}', '${getElement_3}', '${getElement_4}'\n`);
+
+// Checking clone for list
+const cloneList = list.clone();
+
+console.log("Method clone:");
+process.stdout.write("Main list: ");
+console.log(`Size list: ${list.length()}, result: ${list.result()}`);
+process.stdout.write("Cloned list: ");
+console.log(`Size list: ${cloneList.length()}, result: ${cloneList.result()}\n`);
+
+list.append('!');
+cloneList.append('P');
+
+console.log("Check difference of these lists:");
+process.stdout.write("Main list (append '!'): ");
+console.log(`Size list: ${list.length()}, result: ${list.result()}`);
+process.stdout.write("Cloned list (append 'P'): ");
+console.log(`Size list: ${cloneList.length()}, result: ${cloneList.result()}\n`);

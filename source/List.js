@@ -29,9 +29,36 @@ class List {
 
       const value = this.list[index];
       this.list.splice(index, 1);
+      
       return value;
    }
 
+   deleteAll(element) {
+      this.list = this.list.filter((item) => item !== element);
+
+   }
+
+   get(index) {
+      
+      if (index < 0 || index >= this.list.length) {
+         throw new Error('Error. Incorrect index!!!');
+       }
+   
+       return this.list[index];
+   }
+
+   clone() {
+
+      const cloneList = new List();
+      cloneList.list = [...this.list];
+      return cloneList;
+
+   }
+
+   reverse() {
+      this.list.reverse();
+   }
+   
    result() {
       
       let string = "";
