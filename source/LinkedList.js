@@ -347,6 +347,10 @@ class LinkedList {
       let string = "";
       let currentNode = this.head;
 
+      if (!this.head) {
+         return string;
+      }
+
       while (currentNode.next !== this.head) {
 
          string += currentNode.element;
