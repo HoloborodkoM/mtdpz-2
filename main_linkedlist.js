@@ -105,3 +105,54 @@ process.stdout.write("Main linked list (append '!'): ");
 console.log(`Size list: ${linkedList.length()}, result: ${linkedList.result()}`);
 process.stdout.write("Cloned linked list (append 'P'): ");
 console.log(`Size list: ${cloneLinkedList.length()}, result: ${cloneLinkedList.result()}\n`);
+
+linkedList.insert('l', 3);
+
+process.stdout.write("Insert 'l' for find elements: ");
+console.log(`Size list: ${linkedList.length()}, result: ${linkedList.result()}\n`);
+
+// Checking findFirst and findLast for linked list
+const findElement_1 = linkedList.findFirst('l');
+const findElement_2 = linkedList.findLast('l');
+const findElement_3 = linkedList.findFirst('z');
+const findElement_4 = linkedList.findLast('p');
+
+console.log("Methods findFirst findLast:");
+console.log(`Size list: ${linkedList.length()}, result: ${linkedList.result()}`);
+process.stdout.write("Find first: ");
+console.log(`Try find 'l': '${findElement_1}', try find 'z': '${findElement_3}'`);
+process.stdout.write("Find last: ");
+console.log(`Try find 'l': '${findElement_2}', try find 'p': '${findElement_4}'\n`);
+
+// Checking extend for linked list
+const shortLinkedList = new LinkedList();
+
+shortLinkedList.append('k');
+shortLinkedList.append('y');
+shortLinkedList.append('s');
+
+linkedList.extend(shortLinkedList);
+
+console.log("Method extend:");
+process.stdout.write("Main linked list: ");
+console.log(`Size list: ${linkedList.length()}, result: ${linkedList.result()}`);
+process.stdout.write("Short linked list: ");
+console.log(`Size list: ${shortLinkedList.length()}, result: ${shortLinkedList.result()}\n`);
+
+linkedList.delete(3); // 'l'
+shortLinkedList.append('a');
+
+console.log("Delete 'l' for main list and append 'a' for second list\n");
+
+console.log("Check difference of these linked lists:");
+process.stdout.write("Main linked list: ");
+console.log(`Size list: ${linkedList.length()}, result: ${linkedList.result()}`);
+process.stdout.write("Short linked list: ");
+console.log(`Size list: ${shortLinkedList.length()}, result: ${shortLinkedList.result()}\n`);
+
+// Checking clear for linked list
+linkedList.clear();
+
+console.log("Method clear:");
+process.stdout.write("Clear linked list: ");
+console.log(`Size list: ${linkedList.length()}, result: ${linkedList.result()}\n`);

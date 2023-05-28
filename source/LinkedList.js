@@ -258,6 +258,90 @@ class LinkedList {
       this.head = previousNode.next;
    }
 
+   findFirst(element) {
+
+      if (typeof(element) !== 'string' || element.length !== 1) {
+         throw new Error('Error. Expected character type!!!');
+      }
+      
+      let position = 0;
+      let currentNode = this.head;
+
+      while (currentNode.next !== this.head) {
+         
+         if (currentNode.element === element) {
+            return position;
+         }
+         
+         currentNode = currentNode.next;
+         position++;
+         
+      }
+
+      if (currentNode.element === element) {
+         return this.length() - 1;
+      }
+
+      return -1;
+   }
+
+   findLast(element) {
+
+      if (typeof(element) !== 'string' || element.length !== 1) {
+         throw new Error('Error. Expected character type!!!');
+      }
+     
+      let position = 0;
+      let result;
+      let currentNode = this.head;
+
+      while (currentNode.next !== this.head) {
+         
+         if (currentNode.element === element) {
+            result = position;
+         }
+ 
+         currentNode = currentNode.next;
+         position++;
+ 
+      }
+
+      if (currentNode.element === element) {
+         return this.length() - 1;
+      }
+
+      return result === undefined ? -1 : result;
+   }
+
+   clear() {
+      this.head = null;
+   }
+
+   extend(elements) {
+
+      const cloneNodes = elements.clone();
+      
+      let currentNode = this.head;
+      let addNode = cloneNodes.head;
+
+      if (!currentNode) {
+         this.head = cloneNodes.head;
+      } else {
+
+         while (currentNode.next !== this.head) {
+            currentNode = currentNode.next;
+         }
+
+         currentNode.next = cloneNodes.head;
+
+         while (addNode.next !== cloneNodes.head) {
+            addNode = addNode.next;
+         }
+
+         addNode.next = this.head;
+      }
+   }
+
    result() {
 
       let string = "";
