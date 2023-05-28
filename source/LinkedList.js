@@ -193,6 +193,71 @@ class LinkedList {
       }
    }
 
+   get(index) {
+      
+      if (index < 0 || index >= this.length()) {
+         throw new Error('Error. Incorrect index!!!')
+      }
+
+      let currentNode = this.head;
+      let count = 0;
+      
+      while (count < index) {
+
+         currentNode = currentNode.next;
+         count++;
+
+      }
+
+      return currentNode.element;
+   }
+
+   clone() {
+
+      const cloneList = new LinkedList();
+
+      if (this.head) {
+
+         const cloneHead = new Node(this.head.element);
+         cloneList.head = cloneHead;
+         
+         let currentNode = this.head.next;
+         let cloneNode = cloneHead;
+         
+         while (currentNode !== this.head) {
+
+            const newNode = new Node(currentNode.element);
+
+            cloneNode.next = newNode;
+            cloneNode = newNode;
+            currentNode = currentNode.next;
+
+         }
+         
+         cloneNode.next = cloneHead;
+      }
+      
+      return cloneList;
+   }
+
+   reverse() {
+      
+      let currentNode = this.head;
+      let previousNode = null;
+      let nextNode;
+  
+      while (currentNode) {
+
+        nextNode = currentNode.next;
+        currentNode.next = previousNode;
+        previousNode = currentNode;
+        currentNode = nextNode;
+
+      }
+  
+      this.head = previousNode.next;
+   }
+
    result() {
 
       let string = "";

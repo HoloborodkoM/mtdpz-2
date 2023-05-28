@@ -59,3 +59,49 @@ linkedList.deleteAll('+'); // nothing change
 console.log("Method deleteAll:");
 process.stdout.write("Delete all symbols 'K', nothing change with '+': ");
 console.log(`Size list: ${linkedList.length()}, result: ${linkedList.result()}\n`);
+
+// Checking reverse for linked list
+linkedList.reverse();
+
+console.log("Method reverse:");
+process.stdout.write("Reverse linked list: ");
+console.log(`Size list: ${linkedList.length()}, result: ${linkedList.result()}\n`);
+
+linkedList.append('!');
+
+process.stdout.write("Append '!': ");
+console.log(`Size list: ${linkedList.length()}, result: ${linkedList.result()}\n`);
+
+linkedList.reverse();
+
+process.stdout.write("Reverse linked list again with add '!' in start: ");
+console.log(`Size list: ${linkedList.length()}, result: ${linkedList.result()}\n`);
+
+// Checking get for linked list
+const getElement_1 = linkedList.get(2); // 'o'
+const getElement_2 = linkedList.get(0); // '!'
+const getElement_3 = linkedList.get(4); // 'e'
+const getElement_4 = linkedList.get(linkedList.length() - 1); // 't'
+
+console.log("Method get:");
+console.log("Index: 2, 0, 4, 9");
+process.stdout.write("Get this: ");
+console.log(`Elements: '${getElement_1}', '${getElement_2}', '${getElement_3}', '${getElement_4}'\n`);
+
+// Checking clone for linked list
+const cloneLinkedList = linkedList.clone();
+
+console.log("Method clone:");
+process.stdout.write("Main linked list: ");
+console.log(`Size list: ${linkedList.length()}, result: ${linkedList.result()}`);
+process.stdout.write("Cloned linked list: ");
+console.log(`Size list: ${cloneLinkedList.length()}, result: ${cloneLinkedList.result()}\n`);
+
+linkedList.append('!');
+cloneLinkedList.append('P');
+
+console.log("Check difference of these linked lists:");
+process.stdout.write("Main linked list (append '!'): ");
+console.log(`Size list: ${linkedList.length()}, result: ${linkedList.result()}`);
+process.stdout.write("Cloned linked list (append 'P'): ");
+console.log(`Size list: ${cloneLinkedList.length()}, result: ${cloneLinkedList.result()}\n`);
