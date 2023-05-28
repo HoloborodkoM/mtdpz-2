@@ -105,6 +105,94 @@ class LinkedList {
       }
    }
 
+   delete(index) {
+
+      if (index < 0 || index >= this.length()) {
+         throw new Error('Error. Incorrect index!!!');
+      }
+
+      let currentNode = this.head;
+      let deletedNode = null;
+   
+      if (index === 0) {
+
+         if (this.length() === 1) {
+           this.head = null;
+         } else {
+
+            while (currentNode.next !== this.head) {
+               currentNode = currentNode.next;
+            }
+            
+            deletedNode = currentNode.next
+            this.head = this.head.next;
+            currentNode.next = this.head;
+         }
+
+         return deletedNode.element;
+      }
+      
+      let count = 1;
+   
+      while (count < index) {
+
+         currentNode = currentNode.next;
+         count++;
+
+      }
+   
+      deletedNode = currentNode.next;
+      currentNode.next = currentNode.next.next;
+   
+      return deletedNode.element;
+   }
+
+   deleteAll(element) {
+
+      if (typeof(element) !== 'string' || element.length !== 1) {
+         throw new Error('Error. Expected character type!!!');
+      }
+      
+      let currentNode = this.head;
+      let previousNode = null;
+  
+      do {
+
+         if (currentNode.element === element) {
+
+            if (previousNode) {
+
+               previousNode.next = currentNode.next;
+               currentNode = currentNode.next;
+
+            } else {
+
+            while (currentNode.next !== this.head) {
+               currentNode = currentNode.next;
+            }
+            
+            this.head = this.head.next;
+            currentNode.next = this.head;
+            currentNode = this.head;
+
+            }
+
+         } else {
+
+            previousNode = currentNode;
+            currentNode = currentNode.next;
+         }
+
+      } while (currentNode.next !== this.head)
+
+      if (currentNode.element === element) {
+
+         previousNode.next = currentNode.next;
+         currentNode = currentNode.next;
+
+      }
+   }
+
    result() {
 
       let string = "";
